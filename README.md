@@ -6,35 +6,24 @@
 
 
 USER
-
-id
-
-username
+* id
+* username
 
 
 POST
-
-id
-
-creatorId
-
-text
+* id
+* creatorId
+* text
 
 
 LIKE
-
-senderId
-
-postId
+* senderId
+* postId
 
 
 COMMENT
-
-id
-
-creatorId
-
-postId
-
-text
+* id
+* creatorId
+* postId
+* text
 
