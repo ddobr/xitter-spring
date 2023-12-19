@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>USERS</title>
+</head>
+<body>
+    <h1>USERS</h1>
+
+    <ol>
+        <li data-th-each="user : ${list}">
+            <span data-th-text="${user.username}"></span>
+            <span> - </span>
+            <span data-th-text="${user.password}"></span>
+        </li>
+    </ol>
+
+
+    <form action="add" method="post">
+        <label>
+            username
+            <input type="text" id="username" name="username">
+        </label>
+
+        <label>
+            password
+            <input type="text" id="password" name="password">
+        </label>
+
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
