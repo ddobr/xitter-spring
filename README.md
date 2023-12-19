@@ -4,21 +4,37 @@
 
 Сущности
 
+
 USER
+
 id
+
 username
 
+
 POST
+
 id
+
 creatorId
+
 text
+
 
 LIKE
+
 senderId
+
 postId
 
+
 COMMENT
+
 id
+
 creatorId
+
 postId
+
 text
+
