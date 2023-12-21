@@ -9,14 +9,20 @@
 
     <ol>
         <li data-th-each="user : ${list}">
-            <span data-th-text="${user.username}"></span>
-            <span> - </span>
-            <span data-th-text="${user.password}"></span>
+            <form action="/users/delete" method="post">
+                <span data-th-text="${user.username}"></span>
+                <span> - </span>
+                <span data-th-text="${user.password}"></span>
+                <span> - </span>
+                <span data-th-text="${user.id}"></span>
+                <input id="id" name="id" hidden data-th-value="${user.id}">
+                <button type="submit">X</button>
+            </form>
         </li>
     </ol>
 
 
-    <form action="add" method="post">
+    <form action="/users/add" method="post">
         <label>
             username
             <input type="text" id="username" name="username">

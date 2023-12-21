@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class UserDTO {
+
     private  Long id;
 
     @NotBlank
@@ -14,9 +15,11 @@ public class UserDTO {
     @NotBlank
     private String password;
 
+
+    private boolean shouldCreateNew;
+
     public User toEntity() {
         User user = new User();
-        user.setId(id);
         user.setUsername(username);
         user.setPassword(password);
 

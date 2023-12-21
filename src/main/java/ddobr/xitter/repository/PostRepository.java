@@ -1,0 +1,7 @@
+package ddobr.xitter.repository;
+
+import ddobr.xitter.entity.Post;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PostRepository extends JpaRepository<Post, Long> {
+}

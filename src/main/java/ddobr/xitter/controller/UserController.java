@@ -2,7 +2,10 @@ package ddobr.xitter.controller;
 
 import ddobr.xitter.dto.UserDTO;
 import ddobr.xitter.repository.UserRepository;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -17,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
-@RequestMapping("/users/")
+@RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -30,12 +33,12 @@ public class UserController {
         return "users";
     }
 
-    @PostMapping("add")
-    public String add(@Valid UserDTO request, BindingResult result, Model model) {
+    @PostMapping("/add")
+    public String add(@Valid UserDTO request, BindingResult result, Model model, HttpServletResponse response) {
         if (!result.hasErrors()) {
             userRepository.save(request.toEntity());
 
-            return  "redirect:/users/";
+            return  "redirect:/users";
         } else  {
             log.info("has errors: {}", result.getFieldErrors()
                     .stream()
@@ -44,6 +47,13 @@ public class UserController {
         }
 
         return index(model);
+    }
+
+    @PostMapping("/delete")
+    public String deleteUser(@Positive Long id) {
+        userRepository.deleteById(id);
+
+        return "redirect:/users";
     }
 
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Xitter demo</title>
+</head>
+<body>
+<h1>XITTER</h1>
+<div data-th-if="${unknownUser} != null">Incorrect username and/or password</div>
+<div data-th-if="${alreadyExists} != null">User with given credentials already exists</div>
+<form action="/auth/authorize" method="post">
+  <label>
+  Username
+  <input type="text" name="username" id="username" required >
+  </label>
+  <br>
+  <label>
+    Password
+  <input type="text" name="password" id="password" required >
+  </label>
+  <br>
+  <label>
+    <input type="checkbox" name="shouldCreateNew" id="shouldCreateNew">
+    Register new account
+  </label>
+  <br>
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>

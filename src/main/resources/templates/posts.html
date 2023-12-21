@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Xitter demo</title>
+</head>
+<body>
+<h1>XITTER</h1>
+
+<div>
+<form action="/posts" method="post">
+  <input hidden id="authorId" name="authorId" data-th-value="${userId}"/>
+  <label>
+    Say something<br>
+    <textarea id="text" name="text" required ></textarea>
+  </label>
+  <br>
+  <button type="submit">Submit</button>
+</form>
+</div>
+
+<br><br><br>
+
+<div data-th-each="post: ${posts}">
+  <form action="/posts/like" method="post">
+    <input hidden id="postId" name="postId" data-th-value="${post.id}"/>
+    <div>By <b data-th-text="${post.author.username}"></b></div>
+    <div><b data-th-text="${post.likesAmount}"></b> likes</div>
+    <div data-th-text="${post.text}"></div>
+    <a data-th-href="'/posts/' + ${post.id}">View comments</a>
+      <button type="submit" data-th-if="${post.liked} != true">like</button>
+      <button type="submit" data-th-if="${post.liked}">unlike</button>
+  </form>
+  <br><br>
+</div>
+</body>
+</html>
